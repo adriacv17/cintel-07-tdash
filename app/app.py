@@ -6,7 +6,7 @@ from faicons import icon_svg # Library for using icons (font awesome)
 from shiny import reactive # From shiny, import just reactive
 
 from shiny.express import input, render, ui # From shiny.express, import render, ui, and inputs if needed
-from shinywidgets import render_plotly
+from shinywidgets import render_plotly # import renderplotly
 import plotly.express as px
 import palmerpenguins # import palmerpenguins package with dataset
 
