@@ -6,7 +6,8 @@ from faicons import icon_svg # Library for using icons (font awesome)
 from shiny import reactive # From shiny, import just reactive
 
 from shiny.express import input, render, ui # From shiny.express, import render, ui, and inputs if needed
-
+from shinywidgets import render_plotly
+import plotly.express as px
 import palmerpenguins # import palmerpenguins package with dataset
 
 # Get Data
@@ -140,7 +141,17 @@ with ui.layout_columns():
             ]
             return render.DataGrid(filtered_df()[cols], filters=True)
 
+    with ui.card(full_screen=True):
+        ui.card_header("Penguin Plotly")
 
+        @render_plotly
+        def plotly_histogram():
+            return px.histogram(
+            data_frame=filtered_df(),
+                x="bill_length_mm",
+                y="bill_depth_mm",
+                color="species")
+        
 #ui.include_css(app_dir / "styles.css")
 
 
