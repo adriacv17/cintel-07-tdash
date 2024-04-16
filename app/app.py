@@ -112,19 +112,18 @@ with ui.layout_column_wrap(fill=False):
 # Use ui.layout_columns() to create a two-column layout
 # And indent the code to place the two cards in the columns
 with ui.layout_columns():
-
-    # Create card within columns using ui.card()
+# Create plotly histogram
     with ui.card(full_screen=True):
-        ui.card_header("Bill Length and Depth")
-        # Create a scatterplot using seaborn(sns)
-        @render.plot
-        def length_depth():
-            return sns.scatterplot(
-                data=filtered_df(),
+        ui.card_header("Penguin Plotly")
+
+        @render_plotly
+        def plotly_histogram():
+            return px.histogram(
+            data_frame=filtered_df(),
                 x="bill_length_mm",
                 y="bill_depth_mm",
-                hue="species",
-            )
+                color="species")
+        
             
     # Create card within columns using ui.card()
     with ui.card(full_screen=True):
@@ -141,17 +140,6 @@ with ui.layout_columns():
             ]
             return render.DataGrid(filtered_df()[cols], filters=True)
 
-    with ui.card(full_screen=True):
-        ui.card_header("Penguin Plotly")
-
-        @render_plotly
-        def plotly_histogram():
-            return px.histogram(
-            data_frame=filtered_df(),
-                x="bill_length_mm",
-                y="bill_depth_mm",
-                color="species")
-        
 #ui.include_css(app_dir / "styles.css")
 
 
