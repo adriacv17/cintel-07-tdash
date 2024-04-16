@@ -18,11 +18,11 @@ df = palmerpenguins.load_penguins()
 # Call the ui.page_opts() function
 # Set title to a string in quotes that will appear at the top
 # Set fillable to True to use the whole page width for the UI
-ui.page_opts(title="Penguins dashboard", fillable=True)
+ui.page_opts(title="Penguins Updated Dashboard", fillable=True)
 
 # Add a Shiny UI sidebar for user interaction
 # Use the ui.sidebar() function to create a sidebar
-with ui.sidebar(title="Filter controls"):
+with ui.sidebar(title="Input Filters"):
     
 # Use ui.input_slider() to create a slider input
 # pass in four arguments:
@@ -56,17 +56,17 @@ with ui.sidebar(title="Filter controls"):
     ui.h6("Links")
     ui.a(
         "GitHub Source",
-        href="https://github.com/denisecase/cintel-07-tdash",
+        href="https://github.com/adriacv17/cintel-07-tdash",
         target="_blank",
     )
     ui.a(
         "GitHub App",
-        href="https://denisecase.github.io/cintel-07-tdash/",
+        href="https://adriacv17.github.io/cintel-07-tdash/",
         target="_blank",
     )
     ui.a(
         "GitHub Issues",
-        href="https://github.com/denisecase/cintel-07-tdash/issues",
+        href="https://github.com/adriacv17/cintel-07-tdash/issues",
         target="_blank",
     )
     ui.a("PyShiny", href="https://shiny.posit.co/py/", target="_blank")
@@ -86,7 +86,7 @@ with ui.layout_column_wrap(fill=False):
     
     # Call ui.value_box to create a value box within the ui.layout_column_wrap()
     with ui.value_box(showcase=icon_svg("earlybirds")):
-        "Number of penguins"
+        "Total Penguins"
 
         @render.text
         def count():
@@ -114,7 +114,7 @@ with ui.layout_columns():
 
     # Create card within columns using ui.card()
     with ui.card(full_screen=True):
-        ui.card_header("Bill length and depth")
+        ui.card_header("Bill Length and Depth")
         # Create a scatterplot using seaborn(sns)
         @render.plot
         def length_depth():
@@ -127,7 +127,7 @@ with ui.layout_columns():
             
     # Create card within columns using ui.card()
     with ui.card(full_screen=True):
-        ui.card_header("Penguin data")
+        ui.card_header("Penguin Data")
         # Create a data grid using dataframe from library.
         @render.data_frame
         def summary_statistics():
